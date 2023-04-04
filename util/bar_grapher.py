@@ -1,10 +1,14 @@
 import matplotlib.pyplot as plt
 from util.count_hours import calculate_total_hours
+import numpy as np
 
 
 def create_bar_chart(activities, counted_activities, title="Total Screentime"):
     # Create list of total hours for each day
     total_hours = calculate_total_hours(activities, counted_activities)
+
+    # Calculate the average total hours
+    avg_total_hours = np.mean(total_hours)
 
     # Create bar chart for total hours
     fig, ax = plt.subplots(figsize=(10, 6))
@@ -29,5 +33,8 @@ def create_bar_chart(activities, counted_activities, title="Total Screentime"):
     ax.set_ylabel('Total hours')
     ax.set_xlabel('Day')
     ax.set_title(title)
+
+    # Add average to legend
+    ax.legend([f'Average: {avg_total_hours:.2f} hours'])
 
     plt.show()
