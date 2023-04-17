@@ -1,4 +1,4 @@
-from util.main_grapher import create_graph
+from graphers.main_grapher import create_graph
 from data.data import activities, activity_groups_colors, activity_groups
 from util.grouper import map_activities
 

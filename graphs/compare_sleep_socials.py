@@ -1,6 +1,5 @@
-import matplotlib.pyplot as plt
 from data.data import activities
-from util.comparison_grapher import comparison_graph
+from graphers.comparison_grapher import comparison_graph
 
 group_one = ["Discord", "Junk YouTube"]
 group_two = ["Sleep"]

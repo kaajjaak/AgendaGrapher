@@ -1,6 +1,3 @@
-from data.data import activity_groups
-
-
 # take the acivity dictionary and convert it to a new dictionary with the activity groups as keys
 def map_activities(input_dict, activity_groups):
     output_dict = {}
