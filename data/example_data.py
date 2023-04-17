@@ -5,6 +5,8 @@ def convert_to_hours(minutes, hours=0):
 activities = {
     'Monday': [("Breakfast", 1), ("Gaming", 22), ("Sleep", 1)],
     'Tuesday': [("Study", 19), ("Lunch", 1), ("Sleep", 4)],
+    'Wednesday': [("Study", 10), ("Lunch", 10), ("Sleep", 4)],
+    'Thursday': [("Study", 5), ("Bike", 15), ("Sleep", 4)],
 }
 
 activity_colors = {
@@ -13,6 +15,7 @@ activity_colors = {
     'Sleep': '#000000',
     'Study': '#0000FF',
     'Lunch': '#FFD700',
+    'Bike': '#565952',
 }
 
 activity_groups = {
