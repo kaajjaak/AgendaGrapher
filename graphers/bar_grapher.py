@@ -1,11 +1,15 @@
 import matplotlib.pyplot as plt
+
+from util.count_amount import calculate_total_amount
 from util.count_hours import calculate_total_hours
 import numpy as np
 
 
-def create_bar_chart(activities, counted_activities, title="Total Screentime"):
-    # Create list of total hours for each day
-    total_hours = calculate_total_hours(activities, counted_activities)
+def create_bar_chart(activities, counted_activities, title="Total Screentime", measure='value'):
+    if measure == 'value':
+        total_hours = calculate_total_hours(activities, counted_activities)
+    elif measure == 'amount':
+        total_hours = calculate_total_amount(activities, counted_activities)
 
     # Calculate the average total hours
     avg_total_hours = np.mean(total_hours)
@@ -19,9 +23,9 @@ def create_bar_chart(activities, counted_activities, title="Total Screentime"):
     max_value = max(total_hours)
 
     # Calculate the range of values for the horizontal lines
-    start = 2.5
-    end = max_value + 2.5
-    step = 2.5
+    start = 1
+    end = max_value + 1
+    step = 1
 
     number_of_lines = int((end - start) // step)
 
@@ -30,11 +34,14 @@ def create_bar_chart(activities, counted_activities, title="Total Screentime"):
         ax.axhline(value, color='gray', alpha=0.5, linestyle='--')
 
     # Add labels and formatting
-    ax.set_ylabel('Total hours')
+    if measure == 'value':
+        ax.set_ylabel('Total hours')
+    elif measure == 'count':
+        ax.set_ylabel('Total amount')
     ax.set_xlabel('Day')
     ax.set_title(title)
 
     # Add average to legend
-    ax.legend([f'Average: {avg_total_hours:.2f} hours'])
+    ax.legend([f'Average: {avg_total_hours:.0f}'])
 
     plt.show()

@@ -1,8 +1,14 @@
 import matplotlib.pyplot as plt
+
+from util.count_amount import calculate_total_amount
 from util.count_hours import calculate_total_hours
 
 
-def create_line_graph(activities, counted_activities, graph_name="Productivity Chart"):
+def create_line_graph(activities, counted_activities, graph_name="Productivity Chart", measure='value'):
+    if measure == 'value':
+        total_hours = calculate_total_hours(activities, counted_activities)
+    elif measure == 'amount':
+        total_hours = calculate_total_amount(activities, counted_activities)
     # Create list of total productive hours for each day
     total_hours = calculate_total_hours(activities, counted_activities)
 
@@ -23,7 +29,10 @@ def create_line_graph(activities, counted_activities, graph_name="Productivity C
         value = start + i * step
         ax.axhline(value, color='gray', alpha=0.5, linestyle='--')
     # Add labels and formatting
-    ax.set_ylabel('Total hours')
+    if measure == 'value':
+        ax.set_ylabel('Total hours')
+    elif measure == 'count':
+        ax.set_ylabel('Total amount')
     ax.set_xlabel('Day')
     ax.set_title(graph_name)
 
