@@ -6,7 +6,7 @@ import numpy as np
 
 def create_graph(activities, activity_color):
     # Create a stacked horizontal bar chart for the entire week
-    fig, ax = plt.subplots(figsize=(14, 8))
+    fig, ax = plt.subplots(figsize=(14, 12))
     for i, (day, activities) in enumerate(activities.items()):
         durations = [activity[1] for activity in activities]
         left = np.zeros(len(durations))
