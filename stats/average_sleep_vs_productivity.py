@@ -1,7 +1,8 @@
-from stats.average_productivity import get_average_productivity
+from stats.average import get_average
 
-def get_average_sleep(activities, productive_activities):
-    average_productivity = get_average_productivity(activities, productive_activities)
+
+def get_average_sleep_to_productivity(activities, productive_activities):
+    average_productivity = get_average(activities, productive_activities)
     sleep_amounts = []
     for day, activities in activities.items():
         day_productivity = 0
@@ -14,6 +15,4 @@ def get_average_sleep(activities, productive_activities):
                 if activity[0] == "Sleep":
                     sleep_amount += activity[1]
             sleep_amounts.append(sleep_amount)
-    return sum(sleep_amounts)/len(sleep_amounts)
-
-
+    return sum(sleep_amounts) / len(sleep_amounts)
